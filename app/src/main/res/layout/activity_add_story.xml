@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context=".addStory.AddStoryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/orange_light"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <com.example.kitateman.itemUi.OneButtonBack
+                android:id="@+id/button_back_to_list"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start|center_vertical" />
+
+            <TextView
+                android:id="@+id/NewStory_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:text="@string/NewStory"
+                android:textColor="@color/Brown"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/image_story"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/orange_light"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_image_24" />
+
+        <LinearLayout
+            android:id="@+id/layer_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_story"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.example.kitateman.itemUi.OneButtonCamera
+                android:id="@+id/button_camera"
+                android:layout_width="138dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="5dp" />
+
+            <com.example.kitateman.itemUi.OneButtonGaleri
+                android:id="@+id/button_galeri"
+                android:layout_width="138dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/descEditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/layer_two"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/orange_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_add_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="top|left"
+                android:lines="10"
+                android:maxLines="15"
+                android:textColor="@color/Brown"
+                app:boxBackgroundMode="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.example.kitateman.itemUi.OneButtonUpload
+            android:id="@+id/button_add"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/descEditTextLayout"
+            android:layout_margin="15dp" />
+
+    </RelativeLayout>
+
+</ScrollView>

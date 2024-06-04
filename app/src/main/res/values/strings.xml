@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">We are Friends</string>
+
+    <string name="TidakPunyaAkun_text"><u>Press if you do not have an account</u></string>
+    <string name="HomeStory"><b>Story Page</b></string>
+    <string name="NewStory"><b>New Story</b></string>
+    <string name="DetailsStory"><b>Detailed Story</b></string>
+    <string name="title_welcome_page">Welcome to Our Friends App</string>
+    <string name="message_welcome_page">Share your story here with your friends from across the region.</string>
+    <string name="untuk_akses_aplikasi_cerita_kita_teman">To access our story app friends</string>
+    <string name="daftar_akun_dulu_ya">Register for an account first</string>
+    <string name="hai_selamat_datang">Hi! Welcome</string>
+    <string name="di_aplikasi_cerita_kita_teman">In our story app friends</string>
+    <string name="masuk_password">Enter Password</string>
+    <string name="masuk_email">Enter Email</string>
+    <string name="masuk_nama">Enter Name</string>
+    <string name="enabled_text">Login</string>
+    <string name="disabled_text">Fill in Your Data First</string>
+    <string name="camera_title">Camera</string>
+    <string name="gallery_title">gallery</string>
+    <string name="register_title">Register</string>
+    <string name="upload_title">Upload</string>
+    <string name="no_name">No Name</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="successful_exit">Successful exit</string>
+    <string name="Something_wrong">Something wrong</string>
+    <string name="wait">Wait</string>
+    <string name="success">Success</string>
+    <string name="Password_cannot_characters">Password cannot be less than 8 characters</string>
+    <string name="welcome">Welcome</string>
+    <string name="description_required">Description required</string>
+    <string name="camera_permission">Camera permission is required to take photos.</string>
+    <string name="loading">Loading</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="maps">Maps</string>
+    <string name="normal_type">Normal type</string>
+    <string name="satellite_type">Satellite type</string>
+    <string name="terrain_type">Terrain type</string>
+    <string name="hybrid_type">Hybrid type</string>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kita Teman</string>
+
+    <string name="TidakPunyaAkun_text"><u>Tekan jika Anda tidak memiliki akun</u></string>
+    <string name="HomeStory"><b>Halaman Cerita</b></string>
+    <string name="NewStory"><b>Cerita Baru</b></string>
+    <string name="DetailsStory"><b>Detail Cerita</b></string>
+    <string name="title_welcome_page">Selamat datang di Aplikasi Teman Kita</string>
+    <string name="message_welcome_page">Bagikan kisah Anda di sini dengan teman-teman Anda dari seluruh wilayah.</string>
+    <string name="untuk_akses_aplikasi_cerita_kita_teman">Untuk mengakses aplikasi cerita kita teman</string>
+    <string name="daftar_akun_dulu_ya">Daftarkan akun terlebih dahulu ya</string>
+    <string name="hai_selamat_datang">Hai! Selamat datang</string>
+    <string name="di_aplikasi_cerita_kita_teman">Di aplikasi cerita kami, Kita teman</string>
+    <string name="masuk_password">Masuk Kata Sandi</string>
+    <string name="masuk_email">Masuk Email</string>
+    <string name="masuk_nama">Masuk Nama</string>
+    <string name="enabled_text">Masuk</string>
+    <string name="disabled_text">Isi Data Anda Terlebih Dahulu</string>
+    <string name="camera_title">Kamera</string>
+    <string name="gallery_title">gallery</string>
+    <string name="register_title">Daftar</string>
+    <string name="upload_title">Unggah</string>
+    <string name="no_name">Tidak Ada Nama</string>
+    <string name="invalid_email">Alamat email tidak valid</string>
+    <string name="successful_exit">Berhasil Keluar</string>
+    <string name="Something_wrong">Ada yang salah</string>
+    <string name="wait">Tunggu</string>
+    <string name="success">Berhasil</string>
+    <string name="Password_cannot_characters">Password tidak boleh kurang dari 8 karakter</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="description_required">Deskripsi harus diisi</string>
+    <string name="camera_permission">Izin kamera diperlukan untuk mengambil foto.</string>
+    <string name="loading">Memuat</string>
+    <string name="title_activity_maps">PetaAktivitas</string>
+    <string name="maps">Peta</string>
+    <string name="normal_type">Tipe normal</string>
+    <string name="satellite_type">Tipe satelit</string>
+    <string name="terrain_type">Tipe medan</string>
+    <string name="hybrid_type">Tipe hibrida</string>
+</resources>
