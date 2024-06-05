@@ -8,5 +8,8 @@
     <color name="Brown">#693A32</color>
     <color name="Brown_light">#966935</color>
     <color name="orange_light">#FAAF5E</color>
-    <color name="red_warning">#FF0000</color>
+    <color name="red_warning">#E61919</color>
+    <color name="grey_300">#BDBDBD</color>
+    <color name="grey_100">#FAFAFA</color>
+
 </resources>

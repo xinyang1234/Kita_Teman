@@ -2,7 +2,7 @@
     <string name="app_name">We are Friends</string>
 
     <string name="TidakPunyaAkun_text"><u>Press if you do not have an account</u></string>
-    <string name="HomeStory"><b>Story Page</b></string>
+    <string name="HomeStory"><b>Home page</b></string>
     <string name="NewStory"><b>New Story</b></string>
     <string name="DetailsStory"><b>Detailed Story</b></string>
     <string name="title_welcome_page">Welcome to Our Friends App</string>
@@ -37,4 +37,12 @@
     <string name="satellite_type">Satellite type</string>
     <string name="terrain_type">Terrain type</string>
     <string name="hybrid_type">Hybrid type</string>
+    <string name="location_not_found">Location not found</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="post_fail">Failed to Send Post</string>
+    <string name="no_location">no location</string>
+    <string name="off_location">OFF LOCATION</string>
+    <string name="on_location">ON LOCATION</string>
+    <string name="permission_location">Turn on Location on your Device</string>
+    <string name="retry">retry</string>
 </resources>

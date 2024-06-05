@@ -44,11 +44,15 @@ class StoryAdapter : PagingDataAdapter<ListStoryItem, StoryAdapter.ListViewHolde
                     .load(story.photoUrl)
                     .into(ivItemPhoto)
                 tvItemName.text = story.name
+                val latitude = story.lat.toString()
+                val longitude = story.lon.toString()
                 binding.cardStory.setOnClickListener {
                     val intent = Intent(itemView.context, DetailStoryActivity::class.java).apply {
                         putExtra(DetailStoryActivity.USERNAME, story.name)
                         putExtra(DetailStoryActivity.DESCRIPTION, story.description)
                         putExtra(DetailStoryActivity.PHOTO, story.photoUrl)
+                        putExtra(DetailStoryActivity.LATITUDE, latitude)
+                        putExtra(DetailStoryActivity.LONGITUDE, longitude)
                     }
                     val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         itemView.context as Activity,
@@ -56,6 +60,12 @@ class StoryAdapter : PagingDataAdapter<ListStoryItem, StoryAdapter.ListViewHolde
                         androidx.core.util.Pair(tvItemName as View, "name")
                     )
                     itemView.context.startActivity(intent, optionsCompat.toBundle())
+                }
+
+                if (story.lat != 0.0 && story.lon != 0.0) {
+                    storyLocation.visibility = View.GONE
+                } else {
+                    storyLocation.visibility = View.VISIBLE
                 }
             }
         }

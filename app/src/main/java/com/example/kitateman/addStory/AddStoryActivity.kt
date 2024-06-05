@@ -4,11 +4,13 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +25,8 @@ import com.example.kitateman.home.ListStory
 import com.example.kitateman.utils.compressImage
 import com.example.kitateman.utils.getImageUri
 import com.example.kitateman.viewModelfactory.ViewModelFactory
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -34,13 +38,79 @@ class AddStoryActivity : AppCompatActivity() {
     private var currentImageUri: Uri? = null
     private val camera_permission = 100
     private lateinit var viewModelAddStory: ViewModelAddStory
+    private lateinit var locationClient: FusedLocationProviderClient
+    lateinit var locationTG: ToggleButton
+    private var latitude: Double? = null
+    private var longitude: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        locationTG = binding.switchLocation
+        locationClient = LocationServices.getFusedLocationProviderClient(this)
         setupAction()
+        findMyLocation()
         viewModelAddStory = accommodating(this as AppCompatActivity)
+    }
+
+    private val permissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    findMyLocation()
+                }
+
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    findMyLocation()
+                }
+
+                else -> {
+                    Toast.makeText(
+                        this@AddStoryActivity,
+                        getString(R.string.permission_denied),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    locationTG.isChecked = false
+                }
+            }
+        }
+
+    private fun findMyLocation() {
+        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            locationClient.lastLocation.addOnSuccessListener { it: Location? ->
+                if (it != null) {
+                    latitude = it.latitude
+                    longitude = it.longitude
+                } else {
+                    Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        } else {
+            requestLocationPermission()
+        }
+    }
+
+    private fun requestLocationPermission() {
+        permissionLauncher.launch(
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+        )
+    }
+
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun accommodating(activity: AppCompatActivity): ViewModelAddStory {
@@ -53,15 +123,45 @@ class AddStoryActivity : AppCompatActivity() {
         binding.buttonAdd.setOnClickListener {
             Toast.makeText(this@AddStoryActivity, getString(R.string.wait), Toast.LENGTH_SHORT)
                 .show()
-            if (binding.edAddDescription.text.isNullOrEmpty()) {
-                Toast.makeText(this, getString(R.string.description_required), Toast.LENGTH_SHORT)
-                    .show()
+            if (locationTG.isChecked) {
+                if (binding.edAddDescription.text.isNullOrEmpty()) {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.description_required),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val description = binding.edAddDescription.text.toString()
+                    if (!TextUtils.isEmpty(description) && currentImageUri != null && latitude != null && longitude != null) {
+                        postFile(description)
+                    } else {
+                        Toast.makeText(
+                            this,
+                            getString(R.string.permission_location),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             } else {
-                val description = binding.edAddDescription.text.toString()
-                if (!TextUtils.isEmpty(description) && currentImageUri != null) {
-                    PostFile(description)
+                latitude = 0.0
+                longitude = 0.0
+                if (binding.edAddDescription.text.isNullOrEmpty()) {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.description_required),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val description = binding.edAddDescription.text.toString()
+                    if (!TextUtils.isEmpty(description) && currentImageUri != null && latitude != null && longitude != null) {
+                        postFile(description)
+                    } else {
+                        Toast.makeText(this, getString(R.string.post_fail), Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
+
         }
 
         binding.buttonBackToList.setOnClickListener {
@@ -74,7 +174,7 @@ class AddStoryActivity : AppCompatActivity() {
         binding.buttonGaleri.setOnClickListener { startGallery() }
     }
 
-    private fun PostFile(description: String) {
+    private fun postFile(description: String) {
         currentImageUri?.let { uri ->
             val file = uriToFile(uri)
             val descriptionBody = RequestBody.create("text/plain".toMediaTypeOrNull(), description)
@@ -82,7 +182,8 @@ class AddStoryActivity : AppCompatActivity() {
             val multipartImage =
                 MultipartBody.Part.createFormData("photo", file.name, requestImageFile)
 
-            viewModelAddStory.aDDStory(multipartImage, descriptionBody).observe(this) { result ->
+            viewModelAddStory.aDDStory(multipartImage, descriptionBody, latitude!!, longitude!!)
+                .observe(this) { result ->
                 when (result) {
                     is ResultOne.Successdata -> {
                         Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show()

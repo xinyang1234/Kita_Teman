@@ -39,10 +39,18 @@ android {
         viewBinding = true
         buildConfig = true // Tambahkan ini untuk mengaktifkan buildConfig
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.12")
     val cameraxVersion = "1.3.0"
 
     implementation("androidx.core:core-ktx:1.13.1")
@@ -74,6 +82,14 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
     implementation("androidx.paging:paging-runtime:3.3.0")
-
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+
+    androidTestImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+
 }

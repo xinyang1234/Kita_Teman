@@ -113,7 +113,7 @@ class RegisterActivity : AppCompatActivity() {
         val email = binding.emailEditTextRegis.text.toString()
         val name = binding.nameEditTextRegis.text.toString()
         binding.myButtonRegister.isEnabled =
-            password != null && password.isNotEmpty() && name != null && name.isNotEmpty() && email != null && email.isNotEmpty()
+            true && password.isNotEmpty() && true && name.isNotEmpty() && true && email.isNotEmpty()
     }
 
     private fun registerDataSend(name: String, email: String, password: String) {

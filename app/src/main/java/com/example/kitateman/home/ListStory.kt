@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kitateman.R
 import com.example.kitateman.addStory.AddStoryActivity
+import com.example.kitateman.data.adapter.Loading
 import com.example.kitateman.data.adapter.StoryAdapter
 import com.example.kitateman.database.DataPreferences
 import com.example.kitateman.databinding.ActivityListStoryBinding
@@ -60,9 +61,13 @@ class ListStory : AppCompatActivity() {
 
     private fun getData() {
         val adapter = StoryAdapter()
-        binding.rcListStory.adapter = adapter
         listStoryViewModel.getListStory.observe(this) {
             adapter.submitData(lifecycle, it)
         }
+        binding.rcListStory.adapter = adapter.withLoadStateFooter(
+            footer = Loading {
+                adapter.retry()
+            }
+        )
     }
 }

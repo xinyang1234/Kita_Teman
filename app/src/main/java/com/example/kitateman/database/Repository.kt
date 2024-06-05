@@ -12,6 +12,7 @@ import com.example.kitateman.data.response.AddNewStoryResponse
 import com.example.kitateman.data.response.ListStoryItem
 import com.example.kitateman.data.response.LoginResponse
 import com.example.kitateman.data.response.RegisterResponse
+import com.example.kitateman.data.response.StoryResponse
 import com.example.kitateman.data.retrofit.ApiService
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -67,15 +68,37 @@ class Repository(application: Application, private val dataPreferences: DataPref
         ).liveData
     }
 
+    fun listStoryLoc(): LiveData<ResultOne<StoryResponse>> = liveData {
+        try {
+            val response = apiService.getStoryLoc(
+                token = "Bearer ${dataPreferences.getUser().token}",
+                page = 1,
+                size = 100,
+                location = 1
+            )
+            if (response.error) {
+                emit(ResultOne.Errordata(response.message))
+            } else {
+                emit(ResultOne.Successdata(response))
+            }
+        } catch (e: Exception) {
+            emit(ResultOne.Errordata(e.message.toString()))
+        }
+    }
+
     fun aDDStory(
         imageFile: MultipartBody.Part,
-        desc: RequestBody
+        desc: RequestBody,
+        lat: Double,
+        lon: Double
     ): LiveData<ResultOne<AddNewStoryResponse>> = liveData {
         try {
             val response = apiService.aDDStory(
                 token = "Bearer ${dataPreferences.getUser().token}",
                 file = imageFile,
-                description = desc
+                description = desc,
+                lat = lat,
+                lon = lon
             )
             if (response.error) {
                 emit(ResultOne.Errordata(response.message))

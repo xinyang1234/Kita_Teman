@@ -42,5 +42,7 @@ class DetailStoryActivity : AppCompatActivity() {
         const val USERNAME = "name"
         const val DESCRIPTION = "desc"
         const val PHOTO = "photo"
+        const val LATITUDE = "lat"
+        const val LONGITUDE = "long"
     }
 }

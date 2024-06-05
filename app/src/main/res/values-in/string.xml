@@ -3,7 +3,7 @@
     <string name="app_name">Kita Teman</string>
 
     <string name="TidakPunyaAkun_text"><u>Tekan jika Anda tidak memiliki akun</u></string>
-    <string name="HomeStory"><b>Halaman Cerita</b></string>
+    <string name="HomeStory"><b>Beranda</b></string>
     <string name="NewStory"><b>Cerita Baru</b></string>
     <string name="DetailsStory"><b>Detail Cerita</b></string>
     <string name="title_welcome_page">Selamat datang di Aplikasi Teman Kita</string>
@@ -38,4 +38,11 @@
     <string name="satellite_type">Tipe satelit</string>
     <string name="terrain_type">Tipe medan</string>
     <string name="hybrid_type">Tipe hibrida</string>
+    <string name="location_not_found">Lokasi tidak ditemukan</string>
+    <string name="permission_denied">Perizinan ditolak</string>
+    <string name="post_fail">Gagal mengunggah</string>
+    <string name="no_location">Tidak ada lokasi</string>
+    <string name="off_location">LOKASI MATI</string>
+    <string name="on_location">LOKASI HIDUP</string>
+    <string name="permission_location">Hidupkan Lokasi Di Device, Tutup Aplikasi dan Buka Kembali</string>
 </resources>

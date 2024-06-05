@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -35,7 +35,7 @@
                 android:layout_marginStart="10dp"
                 android:text="@string/NewStory"
                 android:textColor="@color/Brown"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -66,13 +66,13 @@
                 android:id="@+id/button_camera"
                 android:layout_width="138dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="5dp" />
+                android:layout_marginEnd="5dp" />
 
             <com.example.kitateman.itemUi.OneButtonGaleri
                 android:id="@+id/button_galeri"
                 android:layout_width="138dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginStart="5dp" />
 
         </LinearLayout>
 
@@ -101,12 +101,37 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.example.kitateman.itemUi.OneButtonUpload
-            android:id="@+id/button_add"
+        <LinearLayout
+            android:id="@+id/layer_three"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/descEditTextLayout"
-            android:layout_margin="15dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.example.kitateman.itemUi.OneButtonUpload
+                android:id="@+id/button_add"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp" />
+
+            <ToggleButton
+                android:id="@+id/switch_location"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/toggle_button_background"
+                android:button="@null"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textOff="@string/off_location"
+                android:textOn="@string/on_location"
+                android:thumb="@drawable/toggle_button_thumb" />
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 

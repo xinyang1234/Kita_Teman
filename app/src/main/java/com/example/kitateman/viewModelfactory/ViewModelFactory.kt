@@ -7,6 +7,7 @@ import com.example.kitateman.addStory.ViewModelAddStory
 import com.example.kitateman.database.DataPreferences
 import com.example.kitateman.home.ViewModelListStory
 import com.example.kitateman.login.ViewModelMain
+import com.example.kitateman.maps.ViewModelMaps
 import com.example.kitateman.register.ViewModelRegister
 
 class ViewModelFactory(
@@ -37,6 +38,12 @@ class ViewModelFactory(
 
             modelClass.isAssignableFrom(ViewModelAddStory::class.java) ->
                 ViewModelAddStory(
+                    dataPreferences,
+                    application
+                ) as T
+
+            modelClass.isAssignableFrom(ViewModelMaps::class.java) ->
+                ViewModelMaps(
                     dataPreferences,
                     application
                 ) as T
