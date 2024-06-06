@@ -70,30 +70,20 @@ class MainActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().length < 8) {
-                    binding.titleRegisterPasswordWarning.setText(R.string.Password_cannot_characters)
-                } else {
-                    binding.titleRegisterPasswordWarning.text = ""
-                    setMyButtonEnable()
-                }
+                setMyButtonEnable()
             }
-
             override fun afterTextChanged(s: Editable?) {}
         })
 
         binding.emailEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    setMyButtonEnable()
-
+                setMyButtonEnable()
             }
-
             override fun afterTextChanged(s: Editable?) {}
         })
         binding.myButtonMain.setOnClickListener {
-
             Toast.makeText(this@MainActivity, getString(R.string.wait), Toast.LENGTH_SHORT).show()
             val password = binding.passwordEditText.text.toString()
             val email = binding.emailEditText.text.toString()

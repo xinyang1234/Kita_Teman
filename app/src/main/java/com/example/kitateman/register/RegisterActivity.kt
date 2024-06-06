@@ -27,7 +27,6 @@ class RegisterActivity : AppCompatActivity() {
         viewModelRegister = accommodating(this as AppCompatActivity)
         setupAction()
         setupAnimation()
-
     }
 
     private fun accommodating(activity: AppCompatActivity): ViewModelRegister {
@@ -70,12 +69,7 @@ class RegisterActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().length < 8) {
-                    binding.titleRegisterPasswordWarning.setText(R.string.Password_cannot_characters)
-                } else {
-                    binding.titleRegisterPasswordWarning.text = ""
                     setMyButtonEnable()
-                }
             }
 
             override fun afterTextChanged(s: Editable?) {}

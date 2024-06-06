@@ -96,23 +96,11 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/title_register_password_warning"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ed_login_password"
-            android:textColor="@color/red_warning"
-            android:textSize="12dp"
-            android:textStyle="italic"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            />
-
         <com.example.kitateman.itemUi.OneButton
             android:id="@+id/my_button_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title_register_password_warning"
+            android:layout_below="@+id/ed_login_password"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
